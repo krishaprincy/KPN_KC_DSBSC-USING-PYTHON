@@ -1,0 +1,76 @@
+# DSBSC-using-Python
+
+Aim
+
+To implement and analyze Double Sideband Suppressed Carrier (DSB-SC) modulation using Python's NumPy and Matplotlib libraries.
+
+Apparatus Required
+
+1.	Software: Python with NumPy and Matplotlib libraries
+2.	Hardware: Personal Computer
+  
+Theory
+
+Double Sideband Suppressed Carrier (DSB-SC) modulation is a type of amplitude modulation where the carrier signal is suppressed, and only the sidebands (which contain the actual information) are transmitted.
+The amplitude of the carrier wave is varied in accordance with the message signal, but unlike conventional AM, the carrier component is not transmitted, making the transmission more power-efficient.
+
+
+Algorithm
+
+
+1.Initialize Parameters: Set the values for carrier frequency, message frequency, and sampling frequency.
+
+2.Generate Time Axis: Create a time vector for the signal duration.
+
+3.Generate Message Signal: Define the message signal as a cosine wave.
+
+4.Generate Carrier Signal: Define the carrier signal as a cosine wave.
+
+5.Generate DSB-SC Signal: Multiply the message signal and carrier signal to obtain the DSB-SC modulated signal.
+
+6.Plot the Signals: Use Matplotlib to plot the message signal, carrier signal, and modulated signal.
+
+Program
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+Am=5.1
+Ac=10.2
+fm=414
+fc=4140
+fs=41400
+t=np.arange(0,3/fm,1/fs)
+m=Am*np.cos(2*np.pi*fm*t)
+c=Ac*np.cos(2*np.pi*fc*t)
+eDSBSC=Ac*(m/Am)*np.cos(2*np.pi*fc*t)
+
+plt.subplot(3,1,1)
+plt.plot(t,m)
+plt.grid()
+plt.subplot(3,1,2)
+plt.plot(t,c)
+plt.grid()
+plt.subplot(3,1,3)
+plt.plot(t,eDSBSC)
+plt.grid()
+
+plt.tight_layout()
+plt.show()
+
+```
+
+Output Waveform
+
+
+
+
+Tabular Column
+
+
+
+
+Result
+
+The message signal, carrier signal, and DSB-SC modulated signal will be displayed in separate plots.
+The modulated signal will contain two sidebands without the carrier component, representing the double sideband suppressed carrier waveform.
